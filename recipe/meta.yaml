@@ -17,8 +17,7 @@ build:
   number: 1
   script:
     - pushd {{ pkg_src }}
-    - go build -v -o $GOBIN/{{ name }} .       # [unix]
-    - go build -v -o %GOBIN%\{{ name }}.exe .  # [win]
+    - go install -v .
 
 requirements:
   build:
