@@ -14,7 +14,7 @@ source:
     sha256: c5f77d50eeda704a228f30f5a233ef0e56ef9f4cc83433d46e331b3247d28c6d
 
 build:
-  number: 0
+  number: 1
   script:
     - pushd {{ pkg_src }}
     - go build -v -o $GOBIN/{{ name }} .       # [unix]
