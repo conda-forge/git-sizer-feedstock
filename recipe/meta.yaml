@@ -1,5 +1,5 @@
 {% set goname = "github.com/github/git-sizer" %}
-{% set version = "1.3.0" %}
+{% set version = "1.4.0" %}
 
 {% set name = goname.split('/')[-1] %}
 {% set pkg_src = ('src/'+goname).replace("/",os.sep) %}
@@ -11,7 +11,7 @@ package:
 source:
   - folder: {{ pkg_src }}
     url: https://{{ goname }}/archive/v{{ version }}.tar.gz
-    sha256: c5f77d50eeda704a228f30f5a233ef0e56ef9f4cc83433d46e331b3247d28c6d
+    sha256: 5dafc4014d6bfae40e678d72c0a67a29cd9ac7b38a0894fc75ab8c05a9064a4b
 
 build:
   number: 0
