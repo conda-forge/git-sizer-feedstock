@@ -1,5 +1,5 @@
 {% set name = "git-sizer" %}
-{% set version = "1.4.0" %}
+{% set version = "1.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/github/git-sizer/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 5dafc4014d6bfae40e678d72c0a67a29cd9ac7b38a0894fc75ab8c05a9064a4b
+    sha256: 07a5ac5f30401a17d164a6be8d52d3d474ee9c3fb7f60fd83a617af9f7e902bb
 
 build:
   number: 0
