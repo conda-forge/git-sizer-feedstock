@@ -1,22 +1,30 @@
-{% set name = "git-sizer" %}
+{% set goname = "github.com/github/git-sizer" %}
 {% set version = "1.5.0" %}
+
+{% set name = goname.split('/')[-1] %}
+{% set pkg_src = ('src/'+goname).replace("/",os.sep) %}
 
 package:
   name: {{ name|lower }}
-  version: {{ version }}
+  version: {{ version|replace("-", "_") }}
 
 source:
-  - url: https://github.com/github/git-sizer/archive/refs/tags/v{{ version }}.tar.gz
+  - folder: {{ pkg_src }}
+    url: https://github.com/github/git-sizer/archive/refs/tags/v{{ version }}.tar.gz
     sha256: 07a5ac5f30401a17d164a6be8d52d3d474ee9c3fb7f60fd83a617af9f7e902bb
 
 build:
-  number: 0
-  binary_relocation: false
-  detect_binary_files_with_prefix: false
+  number: 1
+  script:
+    - pushd {{ pkg_src }}
+    - go build -ldflags "-s -w -X main.ReleaseVersion=${PKG_VERSION}" -v -o $PREFIX/bin/git-sizer       # [not win]
+    - go build -ldflags "-s -w -X main.ReleaseVersion=%PKG_VERSION%" -v -o %LIBRARY_BIN%\git-sizer.exe  # [win]
+    - go-licenses save . --save_path ../../../../library_licenses
 
 requirements:
   build:
     - {{ compiler('go') }}
+    - go-licenses
 
 test:
   requires:
@@ -29,7 +37,9 @@ about:
   home: https://github.com/github/git-sizer
   license: MIT
   license_family: MIT
-  license_file: LICENSE.md
+  license_file:
+    - {{ pkg_src }}/LICENSE.md
+    - library_licenses/
   summary: |
     Compute various size metrics for a Git repository, flagging those that might
     cause problems
