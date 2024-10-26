@@ -37,7 +37,7 @@ about:
   home: https://github.com/github/git-sizer
   license: MIT
   license_family: MIT
-    license_file:
+  license_file:
     - {{ pkg_src }}/LICENSE.md
     - library_licenses/
   summary: |
