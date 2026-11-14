@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: git-sizer
-  version: 1.5.0
+  version: "1.6.0"
 
 package:
   name: ${{ name }}
@@ -10,11 +10,11 @@ package:
 
 source:
   url: https://github.com/github/${{ name }}/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 07a5ac5f30401a17d164a6be8d52d3d474ee9c3fb7f60fd83a617af9f7e902bb
+  sha256: 2c6355a9ccdaa6bbe03fa309e087483961afefcfbf354491a419e1d5e6c1bbd1
   target_directory: src
 
 build:
-  number: 3
+  number: 0
   script:
     - cd src
     - if: unix
